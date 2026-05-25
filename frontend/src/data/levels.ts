@@ -1,6 +1,7 @@
 export type LevelType = 'phishing' | 'password' | 'quiz';
 
 export interface LevelData {
+  difficulty: 'Principiante' | 'Medio';
   id: number;
   title: string;
   type: LevelType;
@@ -12,6 +13,7 @@ export interface LevelData {
 export const LEVELS: LevelData[] = [
   {
     id: 1,
+    difficulty: "Principiante",
     title: "Operación: Anzuelo Digital",
     type: "phishing",
     description: "Identifica ataques de Phishing y protege la red de la Alcaldía.",
@@ -41,6 +43,7 @@ export const LEVELS: LevelData[] = [
   },
   {
     id: 2,
+    difficulty: "Principiante",
     title: "Código Enigma: Acceso al Despacho",
     type: "password",
     description: "Crea una contraseña segura para el sistema central del Despacho del Alcalde.",
@@ -51,6 +54,7 @@ export const LEVELS: LevelData[] = [
   },
   {
     id: 3,
+    difficulty: "Principiante",
     title: "Incidente en Tesorería",
     type: "phishing",
     description: "Analiza correos dirigidos a la Secretaría de Hacienda.",
@@ -80,6 +84,7 @@ export const LEVELS: LevelData[] = [
   },
   {
     id: 4,
+    difficulty: "Principiante",
     title: "Normativa de Privacidad",
     type: "quiz",
     description: "Evaluación sobre la ley de protección de datos de los ciudadanos.",
@@ -97,6 +102,7 @@ export const LEVELS: LevelData[] = [
   },
   {
     id: 5,
+    difficulty: "Principiante",
     title: "El USB Misterioso",
     type: "quiz",
     description: "Riesgos de seguridad física en las instalaciones.",
@@ -114,6 +120,7 @@ export const LEVELS: LevelData[] = [
   },
   {
     id: 6,
+    difficulty: "Principiante",
     title: "Ataque a Infraestructura",
     type: "password",
     description: "Refuerza los accesos a los servidores del Acueducto Municipal.",
@@ -124,6 +131,7 @@ export const LEVELS: LevelData[] = [
   },
   {
     id: 7,
+    difficulty: "Principiante",
     title: "Fraude de Contratación",
     type: "phishing",
     description: "Evita estafas en el sistema de contratación pública (SECOP).",
@@ -144,6 +152,7 @@ export const LEVELS: LevelData[] = [
   },
   {
     id: 8,
+    difficulty: "Principiante",
     title: "Ransomware en la Red",
     type: "quiz",
     description: "Cómo actuar ante una amenaza inminente.",
@@ -161,6 +170,7 @@ export const LEVELS: LevelData[] = [
   },
   {
     id: 9,
+    difficulty: "Principiante",
     title: "Ingeniería Social (Vishing)",
     type: "quiz",
     description: "Reconoce los ataques por vía telefónica.",
@@ -178,6 +188,7 @@ export const LEVELS: LevelData[] = [
   },
   {
     id: 10,
+    difficulty: "Principiante",
     title: "Wi-Fi Público",
     type: "quiz",
     description: "El riesgo de trabajar desde cafeterías.",
@@ -194,19 +205,49 @@ export const LEVELS: LevelData[] = [
     }
   },
   // Niveles del 11 al 25...
-  { id: 11, title: "Clasificación de Información", type: "quiz", description: "Manejo de documentos clasificados.", xpReward: 100, content: { question: "Te piden tirar a la basura contratos vencidos de hace 10 años. ¿Cómo lo haces?", options: ["Al contenedor de reciclaje público.", "Usando la destructora de papel de la oficina.", "Enviándolos con el personal de limpieza habitual."], correctAnswer: 1, explanation: "La información confidencial impresa debe ser destruida físicamente (Shredding) para evitar ataques de Trashing (robo de basura)." } },
-  { id: 12, title: "Actualizaciones Pendientes", type: "quiz", description: "Importancia de los parches de seguridad.", xpReward: 100, content: { question: "Tu sistema operativo te pide reiniciar para instalar parches críticos de seguridad. Tienes mucho trabajo.", options: ["Pospongo la actualización para el próximo mes.", "Instalo el parche de inmediato durante mi hora de almuerzo.", "Ignoro el mensaje para siempre."], correctAnswer: 1, explanation: "Las actualizaciones parchean vulnerabilidades conocidas. Retrasarlas deja el sistema expuesto." } },
-  { id: 13, title: "Phishing: Contraloría", type: "phishing", description: "Suplantación de autoridades superiores.", xpReward: 200, content: { emails: [{ id:1, sender:"investigacion@contraloriagov.co", subject:"Auditoría Sorpresa", content:"Por favor descargue la citación.", link:"http://contraloriagov.co/citacion.exe", isPhishing:true, explanation:"Disfrazan malware como citaciones legales."}] } },
-  { id: 14, title: "Bloqueo de Pantalla", type: "quiz", description: "Políticas de escritorio limpio.", xpReward: 100, content: { question: "Vas a tomar un café y dejas tu oficina. ¿Qué haces con tu PC?", options: ["Lo dejo desbloqueado porque vuelvo en 2 minutos.", "Bloqueo la sesión usando Win + L.", "Solo apago el monitor."], correctAnswer: 1, explanation: "Siempre bloquea tu equipo al alejarte para prevenir accesos físicos no autorizados." } },
-  { id: 15, title: "Protección de Redes Sociales", type: "password", description: "Protege la cuenta de Twitter de la Alcaldía.", xpReward: 200, content: { context: "La cuenta de prensa de la alcaldía necesita una clave robusta." } },
-  { id: 16, title: "Smishing (SMS)", type: "quiz", description: "Phishing a través de mensajes de texto.", xpReward: 100, content: { question: "Recibes un SMS de 'AlcaldiaIT' pidiendo verificar tu cuenta en un enlace bit.ly. ¿Qué haces?", options: ["Hacer clic en el enlace desde el móvil.", "Ignorar y reportar el mensaje a TI.", "Responder el mensaje pidiendo confirmación."], correctAnswer: 1, explanation: "Las instituciones no piden verificar contraseñas vía SMS con enlaces acortados." } },
-  { id: 17, title: "Fraude de Proveedores", type: "phishing", description: "Cambio de cuentas bancarias.", xpReward: 250, content: { emails: [{ id:1, sender:"finanzas@proveedordeoficina.com", subject:"NUEVA CUENTA BANCARIA", content:"Favor transferir los pagos de este mes a esta nueva cuenta.", link:"http://proveedordeoficina.com/banco", isPhishing:true, explanation:"El fraude de facturas (BEC) busca desviar fondos a cuentas de los atacantes."}] } },
-  { id: 18, title: "Macros en Excel", type: "quiz", description: "Peligros de los documentos adjuntos.", xpReward: 150, content: { question: "Descargas un archivo llamado 'Presupuesto.xlsx' de un remitente externo. Al abrirlo, te pide habilitar macros. ¿Qué haces?", options: ["Habilitar macros para ver los números.", "No habilitar macros y contactar al remitente.", "Reenviarlo a todos los compañeros."], correctAnswer: 1, explanation: "Las macros son usadas frecuentemente para ejecutar malware silencioso." } },
-  { id: 19, title: "Contraseñas Compartidas", type: "quiz", description: "Compartir credenciales de acceso.", xpReward: 150, content: { question: "Tu jefe olvidó su clave del portal de contratos y te pide prestada la tuya 'solo por 5 minutos'.", options: ["Se la doy, es mi jefe.", "Le digo que el sistema registra mis acciones y que debe restablecer su clave.", "Le anoto mi clave en un post-it."], correctAnswer: 1, explanation: "Las credenciales son intransferibles para garantizar el principio de no repudio." } },
-  { id: 20, title: "Ingeniería Social Física", type: "quiz", description: "Tailgating en áreas restringidas.", xpReward: 150, content: { question: "Al entrar a la zona de servidores (acceso con tarjeta), alguien viene detrás cargando cajas y te pide que le sostengas la puerta.", options: ["Le sostengo la puerta por cortesía.", "Le pido amablemente que pase su propia tarjeta de acceso.", "Le ayudo a cargar las cajas sin pedirle identificación."], correctAnswer: 1, explanation: "El Tailgating es aprovechar la cortesía humana para saltarse los controles físicos." } },
-  { id: 21, title: "Seguridad Móvil", type: "password", description: "Claves seguras en dispositivos corporativos.", xpReward: 200, content: { context: "El teléfono corporativo requiere un nuevo PIN y clave segura para acceder a correos." } },
-  { id: 22, title: "Phishing: Obras Públicas", type: "phishing", description: "Protege licitaciones importantes.", xpReward: 250, content: { emails: [{id:1, sender:"sistemas@infraestructura-gob.com", subject:"Planos Adjuntos - Licitación", content:"Descargue los planos en .rar", link:"http://infraestructura-gob.com/planos", isPhishing:true, explanation:"Dominio engañoso y uso de archivos comprimidos raros."}] } },
-  { id: 23, title: "Manejo de Incidentes", type: "quiz", description: "Procedimiento correcto al detectar una falla.", xpReward: 150, content: { question: "Te das cuenta que accidentalmente enviaste una tabla con los correos de 10,000 ciudadanos a un contratista equivocado.", options: ["Lo oculto y no le digo a nadie.", "Intento borrar el correo de su bandeja enviando un mensaje de 'recall'.", "Lo reporto inmediatamente al Oficial de Privacidad y TI."], correctAnswer: 2, explanation: "La transparencia y rapidez en reportar fugas de datos mitiga las multas y los daños." } },
-  { id: 24, title: "Deepfakes de Audio", type: "quiz", description: "El fraude del jefe con IA.", xpReward: 200, content: { question: "Recibes una nota de voz por WhatsApp que suena EXACTAMENTE como el Alcalde, pidiendo transferir $50 millones urgentemente.", options: ["Hacer la transferencia inmediatamente.", "Llamarlo al número oficial o confirmar por otro canal oficial antes de hacer algo.", "Reenviar el audio a finanzas."], correctAnswer: 1, explanation: "Los atacantes clonan voces con IA (Deepfakes). Siempre verifica solicitudes financieras anómalas por múltiples canales." } },
-  { id: 25, title: "Graduación: Agente Élite", type: "quiz", description: "Prueba final de conocimientos.", xpReward: 500, content: { question: "La ciberseguridad es responsabilidad exclusiva de:", options: ["El departamento de TI (Sistemas).", "Solo del Alcalde y los directivos.", "De todos los funcionarios, independientemente de su rol."], correctAnswer: 2, explanation: "El eslabón más débil en ciberseguridad siempre es el usuario humano. Todos somos el escudo." } }
+  { id: 11,
+    difficulty: "Principiante",
+    title: "Clasificación de Información", type: "quiz", description: "Manejo de documentos clasificados.", xpReward: 100, content: { question: "Te piden tirar a la basura contratos vencidos de hace 10 años. ¿Cómo lo haces?", options: ["Al contenedor de reciclaje público.", "Usando la destructora de papel de la oficina.", "Enviándolos con el personal de limpieza habitual."], correctAnswer: 1, explanation: "La información confidencial impresa debe ser destruida físicamente (Shredding) para evitar ataques de Trashing (robo de basura)." } },
+  { id: 12,
+    difficulty: "Principiante",
+    title: "Actualizaciones Pendientes", type: "quiz", description: "Importancia de los parches de seguridad.", xpReward: 100, content: { question: "Tu sistema operativo te pide reiniciar para instalar parches críticos de seguridad. Tienes mucho trabajo.", options: ["Pospongo la actualización para el próximo mes.", "Instalo el parche de inmediato durante mi hora de almuerzo.", "Ignoro el mensaje para siempre."], correctAnswer: 1, explanation: "Las actualizaciones parchean vulnerabilidades conocidas. Retrasarlas deja el sistema expuesto." } },
+  { id: 13,
+    difficulty: "Medio",
+    title: "Phishing: Contraloría", type: "phishing", description: "Suplantación de autoridades superiores.", xpReward: 200, content: { emails: [{ id:1, sender:"investigacion@contraloriagov.co", subject:"Auditoría Sorpresa", content:"Por favor descargue la citación.", link:"http://contraloriagov.co/citacion.exe", isPhishing:true, explanation:"Disfrazan malware como citaciones legales."}] } },
+  { id: 14,
+    difficulty: "Medio",
+    title: "Bloqueo de Pantalla", type: "quiz", description: "Políticas de escritorio limpio.", xpReward: 100, content: { question: "Vas a tomar un café y dejas tu oficina. ¿Qué haces con tu PC?", options: ["Lo dejo desbloqueado porque vuelvo en 2 minutos.", "Bloqueo la sesión usando Win + L.", "Solo apago el monitor."], correctAnswer: 1, explanation: "Siempre bloquea tu equipo al alejarte para prevenir accesos físicos no autorizados." } },
+  { id: 15,
+    difficulty: "Medio",
+    title: "Protección de Redes Sociales", type: "password", description: "Protege la cuenta de Twitter de la Alcaldía.", xpReward: 200, content: { context: "La cuenta de prensa de la alcaldía necesita una clave robusta." } },
+  { id: 16,
+    difficulty: "Medio",
+    title: "Smishing (SMS)", type: "quiz", description: "Phishing a través de mensajes de texto.", xpReward: 100, content: { question: "Recibes un SMS de 'AlcaldiaIT' pidiendo verificar tu cuenta en un enlace bit.ly. ¿Qué haces?", options: ["Hacer clic en el enlace desde el móvil.", "Ignorar y reportar el mensaje a TI.", "Responder el mensaje pidiendo confirmación."], correctAnswer: 1, explanation: "Las instituciones no piden verificar contraseñas vía SMS con enlaces acortados." } },
+  { id: 17,
+    difficulty: "Medio",
+    title: "Fraude de Proveedores", type: "phishing", description: "Cambio de cuentas bancarias.", xpReward: 250, content: { emails: [{ id:1, sender:"finanzas@proveedordeoficina.com", subject:"NUEVA CUENTA BANCARIA", content:"Favor transferir los pagos de este mes a esta nueva cuenta.", link:"http://proveedordeoficina.com/banco", isPhishing:true, explanation:"El fraude de facturas (BEC) busca desviar fondos a cuentas de los atacantes."}] } },
+  { id: 18,
+    difficulty: "Medio",
+    title: "Macros en Excel", type: "quiz", description: "Peligros de los documentos adjuntos.", xpReward: 150, content: { question: "Descargas un archivo llamado 'Presupuesto.xlsx' de un remitente externo. Al abrirlo, te pide habilitar macros. ¿Qué haces?", options: ["Habilitar macros para ver los números.", "No habilitar macros y contactar al remitente.", "Reenviarlo a todos los compañeros."], correctAnswer: 1, explanation: "Las macros son usadas frecuentemente para ejecutar malware silencioso." } },
+  { id: 19,
+    difficulty: "Medio",
+    title: "Contraseñas Compartidas", type: "quiz", description: "Compartir credenciales de acceso.", xpReward: 150, content: { question: "Tu jefe olvidó su clave del portal de contratos y te pide prestada la tuya 'solo por 5 minutos'.", options: ["Se la doy, es mi jefe.", "Le digo que el sistema registra mis acciones y que debe restablecer su clave.", "Le anoto mi clave en un post-it."], correctAnswer: 1, explanation: "Las credenciales son intransferibles para garantizar el principio de no repudio." } },
+  { id: 20,
+    difficulty: "Medio",
+    title: "Ingeniería Social Física", type: "quiz", description: "Tailgating en áreas restringidas.", xpReward: 150, content: { question: "Al entrar a la zona de servidores (acceso con tarjeta), alguien viene detrás cargando cajas y te pide que le sostengas la puerta.", options: ["Le sostengo la puerta por cortesía.", "Le pido amablemente que pase su propia tarjeta de acceso.", "Le ayudo a cargar las cajas sin pedirle identificación."], correctAnswer: 1, explanation: "El Tailgating es aprovechar la cortesía humana para saltarse los controles físicos." } },
+  { id: 21,
+    difficulty: "Medio",
+    title: "Seguridad Móvil", type: "password", description: "Claves seguras en dispositivos corporativos.", xpReward: 200, content: { context: "El teléfono corporativo requiere un nuevo PIN y clave segura para acceder a correos." } },
+  { id: 22,
+    difficulty: "Medio",
+    title: "Phishing: Obras Públicas", type: "phishing", description: "Protege licitaciones importantes.", xpReward: 250, content: { emails: [{id:1, sender:"sistemas@infraestructura-gob.com", subject:"Planos Adjuntos - Licitación", content:"Descargue los planos en .rar", link:"http://infraestructura-gob.com/planos", isPhishing:true, explanation:"Dominio engañoso y uso de archivos comprimidos raros."}] } },
+  { id: 23,
+    difficulty: "Medio",
+    title: "Manejo de Incidentes", type: "quiz", description: "Procedimiento correcto al detectar una falla.", xpReward: 150, content: { question: "Te das cuenta que accidentalmente enviaste una tabla con los correos de 10,000 ciudadanos a un contratista equivocado.", options: ["Lo oculto y no le digo a nadie.", "Intento borrar el correo de su bandeja enviando un mensaje de 'recall'.", "Lo reporto inmediatamente al Oficial de Privacidad y TI."], correctAnswer: 2, explanation: "La transparencia y rapidez en reportar fugas de datos mitiga las multas y los daños." } },
+  { id: 24,
+    difficulty: "Medio",
+    title: "Deepfakes de Audio", type: "quiz", description: "El fraude del jefe con IA.", xpReward: 200, content: { question: "Recibes una nota de voz por WhatsApp que suena EXACTAMENTE como el Alcalde, pidiendo transferir $50 millones urgentemente.", options: ["Hacer la transferencia inmediatamente.", "Llamarlo al número oficial o confirmar por otro canal oficial antes de hacer algo.", "Reenviar el audio a finanzas."], correctAnswer: 1, explanation: "Los atacantes clonan voces con IA (Deepfakes). Siempre verifica solicitudes financieras anómalas por múltiples canales." } },
+  { id: 25,
+    difficulty: "Medio",
+    title: "Graduación: Agente Élite", type: "quiz", description: "Prueba final de conocimientos.", xpReward: 500, content: { question: "La ciberseguridad es responsabilidad exclusiva de:", options: ["El departamento de TI (Sistemas).", "Solo del Alcalde y los directivos.", "De todos los funcionarios, independientemente de su rol."], correctAnswer: 2, explanation: "El eslabón más débil en ciberseguridad siempre es el usuario humano. Todos somos el escudo." } }
 ];

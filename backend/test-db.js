@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const uri = "mongodb+srv://damianflorezwilfre_db_user:rSVvhGxszqCQa0tS@cluster0.lrtdcev.mongodb.net/cybershield?appName=Cluster0";
+const uri = "mongodb+srv://damianflorezwilfre_db_user:64Eqam05InhYOMVj@cluster0.lrtdcev.mongodb.net/cybershield?appName=Cluster0";
 
 async function testConnection() {
     try {

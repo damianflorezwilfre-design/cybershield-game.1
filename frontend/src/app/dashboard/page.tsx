@@ -10,6 +10,7 @@ import { LEVELS } from "@/data/levels";
 
 export default function Dashboard() {
   const [user, setUser] = useState<any>(null);
+  const [difficultyFilter, setDifficultyFilter] = useState<'Principiante' | 'Medio'>('Principiante');
   const router = useRouter();
 
   useEffect(() => {
@@ -49,8 +50,8 @@ export default function Dashboard() {
 
   const maxLevel = user.level || 1;
 
-  // Generar 100 niveles
-  const totalLevels = Array.from({length: 100}, (_, i) => i + 1);
+  // Filtrar niveles por dificultad
+  const filteredLevels = LEVELS.filter(l => l.difficulty === difficultyFilter);
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white p-6 relative overflow-hidden">
@@ -62,7 +63,10 @@ export default function Dashboard() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <header className="flex justify-between items-center mb-10 border-b border-gray-800 pb-4 bg-[#0a0a0f] sticky top-0 z-20 pt-4">
-          <h1 className="text-3xl font-bold text-[#00f3ff]">CyberShield Terminal</h1>
+          <div className="flex items-center gap-4">
+            <img src="/logo-alcaldia.png" alt="Logo Alcaldía" className="h-12 w-auto object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
+            <h1 className="text-3xl font-bold text-[#00f3ff] hidden sm:block">CyberShield Terminal</h1>
+          </div>
           <div className="flex gap-4 items-center">
             <div className="text-right">
               <p className="font-bold">{user.username}</p>
@@ -108,13 +112,29 @@ export default function Dashboard() {
             transition={{ delay: 0.2 }}
           >
             <div className="flex justify-between items-end mb-4 border-b border-gray-800 pb-2">
-              <h2 className="text-xl text-[#00f3ff] uppercase tracking-widest">Expediente de Misiones (100)</h2>
+              <h2 className="text-xl text-[#00f3ff] uppercase tracking-widest">Expediente de Misiones</h2>
               <span className="text-gray-500 text-sm">{maxLevel} completadas</span>
+            </div>
+
+            {/* Pestañas de Dificultad */}
+            <div className="flex gap-4 mb-6">
+              <button 
+                onClick={() => setDifficultyFilter('Principiante')}
+                className={`px-6 py-2 rounded-lg font-bold transition-colors ${difficultyFilter === 'Principiante' ? 'bg-[#00f3ff] text-black' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}
+              >
+                Principiante (1-12)
+              </button>
+              <button 
+                onClick={() => setDifficultyFilter('Medio')}
+                className={`px-6 py-2 rounded-lg font-bold transition-colors ${difficultyFilter === 'Medio' ? 'bg-[#bc13fe] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}
+              >
+                Medio (13-25)
+              </button>
             </div>
             
             <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
-              {totalLevels.map((lvl) => {
-                const levelData = LEVELS.find(l => l.id === lvl);
+              {filteredLevels.map((levelData) => {
+                const lvl = levelData.id;
                 const isUnlocked = maxLevel >= lvl;
                 
                 const title = levelData ? levelData.title : "Operación Clasificada";

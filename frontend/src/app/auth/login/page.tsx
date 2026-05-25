@@ -37,7 +37,10 @@ export default function Login() {
       >
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00f3ff] to-[#bc13fe]"></div>
         
-        <h2 className="text-3xl font-bold text-center text-white mb-6">Conexión de Agente</h2>
+        <div className="flex flex-col items-center mb-6">
+          <img src="/logo-alcaldia.png" alt="Logo Alcaldía" className="h-24 w-auto object-contain mb-4" onError={(e) => e.currentTarget.style.display = 'none'} />
+          <h2 className="text-3xl font-bold text-center text-white">Conexión de Agente</h2>
+        </div>
         
         {error && <div className="bg-red-900/50 border border-red-500 text-red-200 p-3 rounded mb-4 text-sm">{error}</div>}
 

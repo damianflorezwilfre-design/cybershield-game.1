@@ -134,6 +134,24 @@ export default function DynamicLevel() {
     handleGameOver(isCorrect ? levelData.xpReward : Math.floor(levelData.xpReward / 2));
   };
 
+  // --- Keyboard Shortcuts ---
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        if (gameOver) {
+          router.push("/dashboard");
+        } else if (feedback) {
+          if (levelData?.type === 'phishing') nextPhishingEmail();
+          else if (levelData?.type === 'quiz') nextQuiz();
+        } else if (levelData?.type === 'password' && password.length > 0) {
+          analyzePassword();
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [gameOver, feedback, levelData, password, isCorrect, currentEmail]);
+
   // --- Renders ---
   if (gameOver) {
     return (
