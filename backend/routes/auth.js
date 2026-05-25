@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Error en el servidor');
+    res.status(500).json({ msg: 'Error en el servidor: ' + err.message });
   }
 });
 
