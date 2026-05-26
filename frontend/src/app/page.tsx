@@ -44,9 +44,9 @@ export default function Home() {
         >
           <h1 
             className="text-5xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#00f3ff] to-[#bc13fe] glitch-effect"
-            data-text="CyberShield Academy"
+            data-text="CyberQuiz Academy"
           >
-            CyberShield Academy
+            CyberQuiz Academy
           </h1>
         </motion.div>
 

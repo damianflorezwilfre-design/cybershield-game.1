@@ -65,7 +65,7 @@ export default function Dashboard() {
         <header className="flex justify-between items-center mb-10 border-b border-gray-800 pb-4 bg-[#0a0a0f] sticky top-0 z-20 pt-4">
           <div className="flex items-center gap-4">
             <img src="/logo-alcaldia.png" alt="Logo Alcaldía" className="h-12 w-auto object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
-            <h1 className="text-3xl font-bold text-[#00f3ff] hidden sm:block">CyberShield Terminal</h1>
+            <h1 className="text-3xl font-bold text-[#00f3ff] hidden sm:block">CyberQuiz Terminal</h1>
           </div>
           <div className="flex gap-4 items-center">
             <div className="text-right">
